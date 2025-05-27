@@ -1,0 +1,248 @@
+/* Estilo geral da aplicação */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 12px;
+}
+
+/* Estilo da barra de menu */
+.menu-bar {
+    -fx-background-color: #2c3e50;
+}
+
+.menu-bar .menu .label {
+    -fx-text-fill: white;
+}
+
+.menu-bar .menu:hover {
+    -fx-background-color: #34495e;
+}
+
+/* Estilo da toolbar */
+.tool-bar {
+    -fx-background-color: #ecf0f1;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 0 0 1 0;
+}
+
+.tool-bar .button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-background-radius: 3;
+    -fx-padding: 5 10 5 10;
+}
+
+.tool-bar .button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.tool-bar .button:pressed {
+    -fx-background-color: #21618c;
+}
+
+/* Estilo das tabelas */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+}
+
+.table-view .column-header {
+    -fx-background-color: #34495e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #34495e;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #ecf0f1;
+}
+
+/* Estilo para linhas de estoque baixo */
+.table-row-cell.low-stock {
+    -fx-background-color: #ffebee;
+}
+
+.table-row-cell.low-stock:selected {
+    -fx-background-color: #e74c3c;
+}
+
+/* Estilo dos campos de texto */
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-padding: 5;
+}
+
+.text-field:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+/* Estilo dos botões */
+.button {
+    -fx-background-color: #3498db;
+    -fx-text-fill: white;
+    -fx-background-radius: 3;
+    -fx-padding: 8 15 8 15;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #2980b9;
+}
+
+.button:pressed {
+    -fx-background-color: #21618c;
+}
+
+/* Botão de perigo (excluir) */
+.button.danger {
+    -fx-background-color: #e74c3c;
+}
+
+.button.danger:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* Botão de sucesso */
+.button.success {
+    -fx-background-color: #27ae60;
+}
+
+.button.success:hover {
+    -fx-background-color: #229954;
+}
+
+/* Estilo dos labels de estatísticas */
+.stats-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.stats-value {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.stats-value.warning {
+    -fx-text-fill: #e74c3c;
+}
+
+/* Estilo da barra de status */
+.status-bar {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 8;
+}
+
+/* Estilo dos separadores */
+.separator {
+    -fx-background-color: #bdc3c7;
+}
+
+/* Estilo dos títulos das seções */
+.section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Estilo dos diálogos */
+.dialog-pane {
+    -fx-background-color: white;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: #3498db;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* Estilo específico para dialog de peças */
+.dialog-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+    -fx-padding: 0 0 10 0;
+}
+
+.primary-button {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+    -fx-background-radius: 3;
+    -fx-padding: 8 15 8 15;
+    -fx-font-weight: bold;
+}
+
+.primary-button:hover {
+    -fx-background-color: #229954;
+}
+
+.primary-button:pressed {
+    -fx-background-color: #1e8449;
+}
+
+/* Estilo das caixas de seleção */
+.choice-box {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+}
+
+.choice-box:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+/* Estilo dos spinners */
+.spinner {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+}
+
+.spinner:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+/* Estilo das áreas de texto */
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: #bdc3c7;
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+    -fx-padding: 5;
+}
+
+.text-area:focused {
+    -fx-border-color: #3498db;
+    -fx-border-width: 2;
+}
+
+/* Estilo dos painéis divididos */
+.split-pane {
+    -fx-background-color: #f8f9fa;
+}
+
+.split-pane .split-pane-divider {
+    -fx-background-color: #bdc3c7;
+    -fx-padding: 0 1 0 1;
+} 

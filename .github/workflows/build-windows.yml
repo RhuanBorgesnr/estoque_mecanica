@@ -1,0 +1,76 @@
+name: Build Windows Executable
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: Cache Maven dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+        
+    - name: Verify Java and Maven
+      run: |
+        java -version
+        mvn -version
+        jpackage --version
+        
+    - name: Clean and compile
+      run: mvn clean compile
+      
+    - name: Run tests (if any)
+      run: mvn test
+      continue-on-error: true
+      
+    - name: Package JAR
+      run: mvn package
+      
+    - name: Create Java Runtime
+      run: |
+        jlink --module-path "$env:JAVA_HOME\jmods" --add-modules java.base,java.desktop,java.logging,java.naming,java.security.jgss,java.instrument,java.management,java.sql,java.xml --output target\java-runtime --compress=2 --no-header-files --no-man-pages
+        
+    - name: Build Windows Executable
+      run: |
+        jpackage --input target --name "EstoqueMecanica" --main-jar EstoqueMecanica-1.0.jar --main-class com.estoque.App --runtime-image target\java-runtime --dest target\dist --type exe --app-version "1.0" --vendor "Oficina Mecânica" --description "Sistema de Gerenciamento de Estoque para Oficinas Mecânicas" --win-dir-chooser --win-menu --win-shortcut --win-menu-group "Oficina" --java-options "-Dfile.encoding=UTF-8"
+        
+    - name: List generated files
+      run: |
+        echo "Files in target/dist:"
+        dir target\dist
+        
+    - name: Upload Windows Executable
+      uses: actions/upload-artifact@v4
+      with:
+        name: EstoqueMecanica-Windows-Executable
+        path: target/dist/*.exe
+        retention-days: 30
+        
+    - name: Create Release (on tag)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: target/dist/*.exe
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
